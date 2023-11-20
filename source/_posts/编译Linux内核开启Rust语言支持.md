@@ -49,10 +49,13 @@ make LLVM=1 -j
 make ARCH=arm64 CLANG_TRIPLE=aarch64_linux_gnu LLVM=1 menuconfig
 make ARCH=arm64 CLANG_TRIPLE=aarch64_linux_gnu LLVM=1 -j
 
-# for riscv64
-# 注： meuconfig时关闭kvm模块，否则内核有bug不能成功编译
-#make ARCH=riscv LLVM=1 menuconfig
-#make ARCH=riscv LLVM=1 LLVM_IAS=0 -j
+# For RISCV
+# 注： 编译器`clang`版本使用的`11`; `llvm-objcopy`的版本也需要>=`11`;
+# LLVM_IAS=0 表示关闭集成的汇编器； llvm-objcopy
+# meuconfig时关闭kvm模块，否则内核有bug不能成功编译;
+# make ARCH=riscv LLVM=1 O=build-riscv-e1000 defconfig
+# make ARCH=riscv LLVM=1 O=build-riscv-e1000 menuconfig
+# make ARCH=riscv LLVM=1 O=build-riscv-e1000 LLVM_IAS=0 -j
 ```
 
 ##### 运行
